@@ -42,3 +42,15 @@ All application state is serialized as JSON under the `form-calisthenics-v1` loc
 ## Next version
 
 Version 2 should add live workout and rest timers, automatically calculated personal records, progress charts and aggregate statistics, plus richer exercise-level notes.
+
+## Cloud backup setup
+
+The app remains fully usable offline with local storage. To enable accounts and cross-device backup:
+
+1. Create a Supabase project.
+2. Open its SQL Editor and run `supabase/schema.sql`.
+3. Copy the project URL and public publishable/anon key into `js/config.js`.
+4. In Supabase Authentication settings, add the app URL to the allowed redirect URLs.
+5. Open Account in the app and create a user.
+
+Never place a Supabase service-role or secret key in this browser app. The included SQL enables Row Level Security so authenticated users can only access their own backup row.
